@@ -29,7 +29,15 @@ end
 
 include_recipe "#{cookbook_name}::database"
 
+service "teamcity-server" do
+  supports start: true, stop: true
+  action :nothing
+end
+
 template "init" do
   path "/etc/init.d/teamcity-server"
   mode 0755
+
+  notifies :enable, "service[teamcity-server]"
+  notifies :start, "service[teamcity-server]"
 end
