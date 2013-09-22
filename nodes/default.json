@@ -1,0 +1,13 @@
+{
+  "run_list": [
+    "recipe[teamcity]"
+  ],
+
+  "postgresql": {
+    "password": {
+      "postgres": "please-change-me-1234",
+      "teamcity": "please-change-me-5678"
+    }
+  }
+
+}

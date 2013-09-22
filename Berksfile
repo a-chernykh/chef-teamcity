@@ -1,1 +1,1 @@
-site :opscode
+cookbook 'teamcity', path: 'site-cookbooks/teamcity'

@@ -9,5 +9,5 @@ How to provision vagrant VM:
 ```bash
 bundle install
 vagrant up
-knife solo bootstrap vagrant@localhost nodes/application.json.sample -p 2222 -i ~/.vagrant.d/insecure_private_key
+knife solo bootstrap vagrant@localhost nodes/default.json -p 2222 -i ~/.vagrant.d/insecure_private_key
 ```
