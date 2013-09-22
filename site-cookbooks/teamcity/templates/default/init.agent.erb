@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+cd <%= node[:teamcity][:agent][:path] %>
+
+case $1 in
+  start)
+    su -c '<%= node[:teamcity][:agent][:path] %>/bin/agent.sh start' <%= node[:teamcity][:user] %>
+  ;;
+  stop)
+    su -c '<%= node[:teamcity][:agent][:path] %>/bin/agent.sh stop' <%= node[:teamcity][:user] %>
+  ;;
+  restart)
+    $0 stop && $0 start
+  ;;
+esac
+
+exit 0

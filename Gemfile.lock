@@ -1,7 +1,8 @@
 GIT
-  remote: git://github.com/AndreyChernyh/knife-solo.git
-  revision: 808c8d25f68805098564e2836fa8dea3b3a2aba7
-  branch: f/update-manifest
+  remote: git://github.com/matschaffer/knife-solo.git
+  revision: 3be7d96047e25cecad5ad65714afa112a346ba1d
+  branch: master
+  submodules: true
   specs:
     knife-solo (0.4.0.pre1)
       chef (>= 10.12)
