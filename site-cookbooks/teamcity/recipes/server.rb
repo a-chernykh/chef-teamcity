@@ -16,6 +16,11 @@ directory node[:teamcity][:path] do
   mode 0755
 end
 
+directory node[:teamcity][:data_path] do
+  owner node[:teamcity][:user]
+  mode 0755
+end
+
 execute "tar --strip-components=1 -zxvf #{download_path}/#{file_name}" do
   user node[:teamcity][:user]
   cwd node[:teamcity][:path]
@@ -23,3 +28,8 @@ execute "tar --strip-components=1 -zxvf #{download_path}/#{file_name}" do
 end
 
 include_recipe "#{cookbook_name}::database"
+
+template "init" do
+  path "/etc/init.d/teamcity-server"
+  mode 0755
+end

@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+export TEAMCITY_DATA_PATH="<%= node[:teamcity][:data_path] %>"
+
+cd <%= node[:teamcity][:path] %>
+
+case $1 in
+  start)
+    su -c '<%= node[:teamcity][:path] %>/bin/teamcity-server.sh start' <%= node[:teamcity][:user] %>
+  ;;
+  stop)
+    su -c '<%= node[:teamcity][:path] %>/bin/teamcity-server.sh stop' <%= node[:teamcity][:user] %>
+  ;;
+esac
+
+exit 0
