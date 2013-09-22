@@ -1,3 +1,5 @@
+default[:teamcity][:host]      = "localhost"
+default[:teamcity][:port]      = "8111"
 default[:teamcity][:url]       = "http://localhost:8111/"
 default[:teamcity][:user]      = "teamcity"
 default[:teamcity][:path]      = "/usr/local/teamcity"

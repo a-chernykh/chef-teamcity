@@ -12,3 +12,8 @@ template "init.server" do
   notifies :enable, "service[teamcity-server]"
   notifies :start, "service[teamcity-server]"
 end
+
+template "server.xml" do
+  path "#{node[:teamcity][:path]}/conf/server.xml"
+  notifies :restart, "service[teamcity-server]"
+end

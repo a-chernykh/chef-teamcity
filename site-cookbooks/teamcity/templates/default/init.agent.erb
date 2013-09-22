@@ -10,7 +10,7 @@ case $1 in
     su -c '<%= node[:teamcity][:agent][:path] %>/bin/agent.sh stop' <%= node[:teamcity][:user] %>
   ;;
   restart)
-    $0 stop && $0 start
+    $0 stop && sleep 3 && $0 start
   ;;
 esac
 
