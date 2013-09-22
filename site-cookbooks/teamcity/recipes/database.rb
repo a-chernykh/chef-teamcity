@@ -18,3 +18,15 @@ postgresql_database node[:teamcity][:database][:name] do
   owner node[:teamcity][:database][:username]
   action :create
 end
+
+remote_file "#{node[:teamcity][:data_path]}/lib/jdbc/postgresql-9.2-1003.jdbc4.jar" do
+  source "http://jdbc.postgresql.org/download/postgresql-9.2-1003.jdbc4.jar"
+  action :create_if_missing
+end
+
+template "database.properties" do
+  path "#{node[:teamcity][:data_path]}/config/database.properties"
+  owner node[:teamcity][:user]
+  mode 0600
+  notifies :restart, "service[teamcity-server]"
+end

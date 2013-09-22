@@ -1,0 +1,20 @@
+# This is a sample configuration file for configuring TeamCity to use external database.
+# To make it effective, copy it to the "database.properties" file and modify settings
+# according to your environment.
+# Do not modify this file, it will be overwritten on TeamCity server startup.
+# See documentation at http://www.jetbrains.net/confluence/display/TCD8/Setting+up+an+External+Database
+
+# Database: PostgreSQL
+
+connectionUrl=jdbc:postgresql://127.0.0.1:5432/<%= node[:teamcity][:database][:name] %>
+connectionProperties.user=<%= node[:teamcity][:database][:username] %>
+connectionProperties.password=<%= node[:postgresql][:password][:teamcity] %>
+
+# The maximum number of connections TeamCity can open on database server.
+maxConnections=50
+
+# Specifies whether TeamCity should check each jdbc connection before use.
+# It reduces the system performace but avoids cases when the system uses
+# a connection that was closed by database server due to time out or this
+# connection was broken at the previous operation.
+testOnBorrow=false
