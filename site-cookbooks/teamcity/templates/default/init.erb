@@ -11,6 +11,9 @@ case $1 in
   stop)
     su -c '<%= node[:teamcity][:path] %>/bin/teamcity-server.sh stop' <%= node[:teamcity][:user] %>
   ;;
+  restart)
+    $0 stop && $0 start
+  ;;
 esac
 
 exit 0
