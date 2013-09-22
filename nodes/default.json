@@ -8,6 +8,11 @@
       "postgres": "please-change-me-1234",
       "teamcity": "please-change-me-5678"
     }
+  },
+
+  "teamcity": {
+    "host": "localhost",
+    "port": "8111"
   }
 
 }

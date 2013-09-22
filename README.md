@@ -1,10 +1,32 @@
-# TeamCity server chef cookbook
+# Description
+Downloads, installs and configures TeamCity server and build agent. It also installs PostgreSQL and uses it as the backend database for TeamCity.
 
-Have been tested with Ubuntu Server 13.04.
+# Requirements
+## Platforms
+* Debian, Ubuntu
 
-## Usage
+Tested on:
 
-How to provision vagrant VM:
+* Ubuntu 13.04
+
+# Configuration
+All configuration should be performed in ```nodes/default.json```. Defaults should work well, but you still need to change database passwords.
+
+Available config items:
+
+* node[:teamcity][:version] - TeamCity version which will be downloaded (default: 8.0.3)
+* node[:teamcity][:host] - Server hostname (default: localhost)
+* node[:teamcity][:port] - Server port (default: 8111)
+* node[:teamcity][:user] - System username under which TeamCity will be running (default: teamcity)
+* node[:teamcity][:path] - Installation path (default: /usr/local/teamcity)
+* node[:teamcity][:data_path] - Data path (default: /var/teamcity)
+* node[:teamcity][:agent][:name] - Agent's name (default: Default agent)
+* node[:teamcity][:database][:name] - PostgreSQL database name (default: teamcity)
+* node[:teamcity][:database][:username] - PostgreSQL username (default: teamcity)
+* node[:postgresql][:password][:postgres] - PostgreSQL password for 'postgres' user
+* node[:postgresql][:password][:teamcity] - PostgreSQL password for 'teamcity' user
+
+# Provision Vagrant virtual machine
 
 ```bash
 bundle install
