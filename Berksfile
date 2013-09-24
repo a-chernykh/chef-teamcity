@@ -1,1 +1,1 @@
-cookbook 'teamcity', path: 'site-cookbooks/teamcity'
+metadata

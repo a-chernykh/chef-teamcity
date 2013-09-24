@@ -21,6 +21,7 @@ end
 
 remote_file "#{node[:teamcity][:data_path]}/lib/jdbc/postgresql-9.2-1003.jdbc4.jar" do
   source "http://jdbc.postgresql.org/download/postgresql-9.2-1003.jdbc4.jar"
+  owner node[:teamcity][:database][:username]
   action :create_if_missing
 end
 

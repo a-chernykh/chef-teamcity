@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "teamcity": {
-      "path": "./site-cookbooks/teamcity"
+      "path": "."
     },
     "apt": {
       "locked_version": "2.1.1"
@@ -11,6 +11,9 @@
     },
     "database": {
       "locked_version": "1.4.0"
+    },
+    "monit": {
+      "locked_version": "0.7.1"
     },
     "build-essential": {
       "locked_version": "1.4.2"

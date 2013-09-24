@@ -24,6 +24,7 @@ end
 
   directory directory do
     owner node[:teamcity][:user]
+    group node[:teamcity][:user]
     mode 0755
   end
 

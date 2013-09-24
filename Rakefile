@@ -1,14 +1,10 @@
-cookbooks_path = 'site-cookbooks'
-
 require 'rubygems'
 require 'bundler'
 
 require 'pathname'
 
 require 'foodcritic'
-FoodCritic::Rake::LintTask.new do |task|
-  task.files = [cookbooks_path]
-end
+FoodCritic::Rake::LintTask.new
 
 Bundler.setup
 
@@ -16,10 +12,8 @@ task default: %i(foodcritic knife chefspec)
 
 desc 'Validates cookbook with "knife cookbook" command'
 task :knife do
-  Dir.glob("#{cookbooks_path}/*").each do |dir|
-    cookbook = Pathname.new(dir).basename.to_s
-    sh "bundle exec knife cookbook test #{cookbook} -o #{cookbooks_path}"
-  end
+  cookbook = File.expand_path(File.dirname(__FILE__)).split(File::SEPARATOR).last
+  sh "bundle exec knife cookbook test #{cookbook} -o ../"
 end
 
 desc 'Executes chefspec specs'
