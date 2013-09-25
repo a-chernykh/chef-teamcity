@@ -14,6 +14,7 @@ end
 
 user node[:teamcity][:user] do
   home node[:teamcity][:path]
+  shell '/bin/bash'
 end
 
 [ node[:teamcity][:path], 
@@ -24,6 +25,7 @@ end
 
   directory directory do
     owner node[:teamcity][:user]
+    group node[:teamcity][:user]
     mode 0755
   end
 

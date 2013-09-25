@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+export TEAMCITY_DATA_PATH=<%= node[:teamcity][:data_path] %> CATALINA_PID=<%= node[:teamcity][:server][:pid_file] %>
+
+cd <%= node[:teamcity][:path] %>
+
+case $1 in
+  start)
+    su -p -c '<%= node[:teamcity][:path] %>/bin/teamcity-server.sh start' <%= node[:teamcity][:user] %>
+  ;;
+  stop)
+    su -p -c '<%= node[:teamcity][:path] %>/bin/teamcity-server.sh stop' <%= node[:teamcity][:user] %>
+  ;;
+  restart)
+    $0 stop && $0 start
+  ;;
+esac
+
+exit 0

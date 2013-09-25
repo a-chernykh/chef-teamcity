@@ -14,7 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://s3.amazonaws.com/life360-vagrant/raring64.box"
+  #
+  # See URLs at http://www.vagrantbox.es/
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -45,10 +47,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
 
-  # config.vm.provider :virtualbox do |vb|
-  #   vb.customize ["modifyvm", :id, "--memory", "2048"]
-  #   vb.customize ["modifyvm", :id, "--cpus",   "2"]
-  # end
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    # vb.customize ["modifyvm", :id, "--cpus",   "2"]
+  end
   
   #
   # View the documentation for the provider you're using for more

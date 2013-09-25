@@ -1,7 +1,0 @@
-default[:teamcity][:version]   = "8.0.3"
-default[:teamcity][:host]      = "localhost"
-default[:teamcity][:port]      = "8111"
-default[:teamcity][:url]       = "http://#{node[:teamcity][:host]}:#{node[:teamcity][:port]}/"
-default[:teamcity][:user]      = "teamcity"
-default[:teamcity][:path]      = "/usr/local/teamcity"
-default[:teamcity][:data_path] = "/var/teamcity"

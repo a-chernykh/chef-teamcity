@@ -1,0 +1,4 @@
+check process teamcity-agent with pidfile <%= @pid_file %>
+  start program = "/etc/init.d/teamcity-agent start"
+  stop program = "/etc/init.d/teamcity-agent stop"
+  group teamcity
