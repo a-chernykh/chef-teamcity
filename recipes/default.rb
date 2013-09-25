@@ -14,6 +14,7 @@ end
 
 user node[:teamcity][:user] do
   home node[:teamcity][:path]
+  shell '/bin/bash'
 end
 
 [ node[:teamcity][:path], 
