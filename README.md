@@ -15,7 +15,7 @@ Tested on:
 * ```teamcity::monit``` - installs monit and configures it to watch server and agent
 
 # Configuration
-All configuration should be performed in ```nodes/default.json```. Defaults should work well, but you still need to change database passwords.
+All configuration should be performed in ```default.json```. Defaults should work well, but you still need to change database passwords.
 
 Available config items:
 
