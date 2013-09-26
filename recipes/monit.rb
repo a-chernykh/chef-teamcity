@@ -9,3 +9,7 @@ end
 monit_monitrc 'teamcity-agent' do
   variables pid_file: node[:teamcity][:agent][:pid_file]
 end
+
+monit_monitrc 'postgresql' do
+  variables pid_file: node[:postgresql][:config][:external_pid_file]
+end
