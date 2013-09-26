@@ -1,0 +1,4 @@
+check process postgresql with pidfile <%= @pid_file %>
+  start program = "/etc/init.d/postgresql start"
+  stop program = "/etc/init.d/postgresql stop"
+  group database
