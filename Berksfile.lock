@@ -13,7 +13,9 @@
       "locked_version": "1.4.0"
     },
     "monit": {
-      "locked_version": "0.7.1"
+      "locked_version": "1.4.0",
+      "git": "https://github.com/phlipper/chef-monit.git",
+      "ref": "276c99ba08869ebd5117267d91a2ff6aa0d9fc6b"
     },
     "build-essential": {
       "locked_version": "1.4.2"
