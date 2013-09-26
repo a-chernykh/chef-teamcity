@@ -11,9 +11,12 @@ template "init.agent" do
   notifies :enable, "service[teamcity-agent]"
 end
 
+config_path = "#{node[:teamcity][:agent][:path]}/conf/buildAgent.properties"
+
 template "buildAgent.properties" do
-  path "#{node[:teamcity][:agent][:path]}/conf/buildAgent.properties"
+  path config_path
   variables url: node[:teamcity][:url],
            name: node[:teamcity][:agent][:name]
   notifies :restart, "service[teamcity-agent]"
+  only_if "grep 'authorizationToken=$' #{config_path}"
 end
