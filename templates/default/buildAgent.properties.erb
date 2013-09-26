@@ -5,11 +5,11 @@
 ######################################
 
 ## The address of the TeamCity server. The same as is used to open TeamCity web interface in the browser.
-serverUrl=<%= node[:teamcity][:url] %>
+serverUrl=<%= @url %>
 
 ## The unique name of the agent used to identify this agent on the TeamCity server
 ## Use blank name to let server generate it. By default, this name would be created from the build agent's host name
-name=<%= node[:teamcity][:agent][:name] %>
+name=<%= @name %>
 
 ## Container directory to create default checkout directories for the build configurations.
 workDir=../work

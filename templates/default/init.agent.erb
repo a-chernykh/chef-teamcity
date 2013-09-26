@@ -1,13 +1,13 @@
 #!/bin/sh -e
 
-cd <%= node[:teamcity][:agent][:path] %>
+cd <%= @path %>
 
 case $1 in
   start)
-    su -c '<%= node[:teamcity][:agent][:path] %>/bin/agent.sh start' <%= node[:teamcity][:user] %>
+    su -c '<%= @path %>/bin/agent.sh start' <%= @user %>
   ;;
   stop)
-    su -c '<%= node[:teamcity][:agent][:path] %>/bin/agent.sh stop' <%= node[:teamcity][:user] %>
+    su -c '<%= @path %>/bin/agent.sh stop' <%= @user %>
   ;;
   restart)
     $0 stop && sleep 3 && $0 start
