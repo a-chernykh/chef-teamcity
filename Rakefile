@@ -8,15 +8,20 @@ FoodCritic::Rake::LintTask.new
 
 Bundler.setup
 
+require 'berkshelf'
+
+FileUtils.rm_rf('vendor/cookbooks')
+berksfile = Berkshelf::Berksfile.from_file('Berksfile')
+berksfile.vendor('vendor/cookbooks')
+
 task default: %i(foodcritic knife chefspec)
 
 desc 'Validates cookbook with "knife cookbook" command'
 task :knife do
-  cookbook = File.expand_path(File.dirname(__FILE__)).split(File::SEPARATOR).last
-  sh "bundle exec knife cookbook test #{cookbook} -o ../"
+  sh "bundle exec knife cookbook test teamcity -o vendor/cookbooks"
 end
 
 desc 'Executes chefspec specs'
 task :chefspec do
-  # sh "bundle exec rspec #{cookbooks_path}/*/spec"
+  sh "bundle exec rspec"
 end
