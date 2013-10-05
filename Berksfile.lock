@@ -17,6 +17,9 @@
       "git": "https://github.com/phlipper/chef-monit.git",
       "ref": "276c99ba08869ebd5117267d91a2ff6aa0d9fc6b"
     },
+    "postfix": {
+      "locked_version": "3.0.0"
+    },
     "build-essential": {
       "locked_version": "1.4.2"
     },
