@@ -1,7 +1,8 @@
 {
   "run_list": [
     "recipe[teamcity]",
-    "recipe[teamcity::monit]"
+    "recipe[teamcity::monit]",
+    "recipe[postfix]"
   ],
 
   "postgresql": {
