@@ -18,5 +18,5 @@ template "buildAgent.properties" do
   variables url: node[:teamcity][:url],
            name: node[:teamcity][:agent][:name]
   notifies :restart, "service[teamcity-agent]"
-  only_if "grep 'authorizationToken=$' #{config_path}"
+  only_if "grep -P 'authorizationToken=\r' #{config_path}"
 end
