@@ -15,17 +15,6 @@ GIT
       solve (>= 0.8.0)
       thor (~> 0.18.0)
 
-GIT
-  remote: git://github.com/matschaffer/knife-solo.git
-  revision: 463112cc853ce09085437b73f60f4e321be70e90
-  branch: master
-  submodules: true
-  specs:
-    knife-solo (0.4.0.pre1)
-      chef (>= 10.12)
-      erubis (~> 2.7.0)
-      net-ssh (>= 2.2.2, < 3.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -210,5 +199,4 @@ DEPENDENCIES
   berkshelf!
   chefspec
   foodcritic
-  knife-solo!
   rake
