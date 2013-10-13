@@ -4,10 +4,10 @@ cd <%= @path %>
 
 case $1 in
   start)
-    su -c '<%= @path %>/bin/agent.sh start' <%= @user %>
+    su -l -c '<%= @path %>/bin/agent.sh start' <%= @user %>
   ;;
   stop)
-    su -c '<%= @path %>/bin/agent.sh stop' <%= @user %>
+    su -l -c '<%= @path %>/bin/agent.sh stop' <%= @user %>
   ;;
   restart)
     $0 stop && sleep 3 && $0 start

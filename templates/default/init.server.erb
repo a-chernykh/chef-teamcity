@@ -6,10 +6,10 @@ cd <%= @path %>
 
 case $1 in
   start)
-    su -p -c '<%= @path %>/bin/teamcity-server.sh start' <%= @user %>
+    su -l -p -c '<%= @path %>/bin/teamcity-server.sh start' <%= @user %>
   ;;
   stop)
-    su -p -c '<%= @path %>/bin/teamcity-server.sh stop' <%= @user %>
+    su -l -p -c '<%= @path %>/bin/teamcity-server.sh stop' <%= @user %>
   ;;
   restart)
     $0 stop && $0 start
