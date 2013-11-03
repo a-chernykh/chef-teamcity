@@ -1,9 +1,9 @@
 # Description
 Downloads, installs and configures TeamCity server and build agent. It also installs PostgreSQL and uses it as the backend database for TeamCity.
 
-# Requirements
-## Platforms
-* Debian, Ubuntu
+# Platforms
+* Debian
+* Ubuntu
 
 Tested on:
 
@@ -15,7 +15,6 @@ Tested on:
 * ```teamcity::monit``` - installs monit and configures it to watch server and agent
 
 # Configuration
-All configuration should be performed in ```default.json```. Defaults should work well, but you still need to change database passwords.
 
 Available config items:
 
@@ -30,11 +29,3 @@ Available config items:
 * ```node[:teamcity][:database][:username]``` - PostgreSQL username (default: teamcity)
 * ```node[:postgresql][:password][:postgres]``` - PostgreSQL password for 'postgres' user
 * ```node[:postgresql][:password][:teamcity]``` - PostgreSQL password for 'teamcity' user
-
-# Provision Vagrant virtual machine
-
-```bash
-bundle install
-vagrant up
-knife solo bootstrap vagrant@localhost default.json -p 2222 -i ~/.vagrant.d/insecure_private_key
-```
