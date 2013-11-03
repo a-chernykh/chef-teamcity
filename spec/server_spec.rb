@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'chef-teamcity-server::server' do
-  let(:chef_run) { ChefSpec::ChefRunner.new platform: 'ubuntu', version: '12.04' }
+describe 'teamcity::server' do
+  let(:chef_run) { ChefSpec::Runner.new }
   let(:converge) { chef_run.converge described_recipe }
 
   before do
@@ -10,9 +10,11 @@ describe 'chef-teamcity-server::server' do
   end
 
   it 'creates init script' do
-    expect(converge).to create_file '/etc/init.d/teamcity-server'
-    expect(converge).to create_file_with_content('init.server', '/usr/local/teamcity/bin/teamcity-server.sh start')
+    expect(converge).to create_template('/etc/init.d/teamcity-server').with(variables: {
+      data_path: '/var/teamcity',
+      pid_file: '/usr/local/teamcity/logs/catalina.pid',
+      path: '/usr/local/teamcity',
+      user: 'teamcity'
+    })
   end
-
 end
-  

@@ -1,10 +1,10 @@
 {
-  "dependencies": {
+  "sources": {
     "teamcity": {
       "path": "."
     },
     "apt": {
-      "locked_version": "2.1.1"
+      "locked_version": "2.3.0"
     },
     "postgresql": {
       "locked_version": "3.0.4"
@@ -21,16 +21,16 @@
       "locked_version": "3.0.0"
     },
     "build-essential": {
-      "locked_version": "1.4.2"
+      "locked_version": "1.4.0"
     },
     "openssl": {
-      "locked_version": "1.1.0"
+      "locked_version": "1.0.2"
     },
     "mysql": {
-      "locked_version": "3.0.6"
+      "locked_version": "3.0.2"
     },
     "aws": {
-      "locked_version": "0.101.6"
+      "locked_version": "0.101.2"
     },
     "xfs": {
       "locked_version": "1.1.0"

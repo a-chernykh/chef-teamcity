@@ -1,6 +1,8 @@
+site :opscode
+
 metadata
 
-cookbook 'apt'
+cookbook 'apt', '~> 2.3.0'
 cookbook 'postgresql'
 cookbook 'database'
 cookbook 'monit', git: 'https://github.com/phlipper/chef-monit.git'

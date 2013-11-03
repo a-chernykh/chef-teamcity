@@ -1,0 +1,12 @@
+AllCops:
+  Excludes:
+    - tmp/**
+
+LineLength:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+StringLiterals:
+  Enabled: false

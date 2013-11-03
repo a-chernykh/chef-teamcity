@@ -2,9 +2,9 @@ include_recipe 'postgresql::server'
 include_recipe 'database::postgresql'
 
 database_connection = {
-  :host     => '127.0.0.1',
-  :username => 'postgres', 
-  :password => node[:postgresql][:password][:postgres]
+  host:     '127.0.0.1',
+  username: 'postgres',
+  password: node[:postgresql][:password][:postgres]
 }.freeze
 
 postgresql_database_user node[:teamcity][:database][:username] do
@@ -30,7 +30,7 @@ template "database.properties" do
   owner node[:teamcity][:user]
   mode 0600
   variables name: node[:teamcity][:database][:name],
-    username: node[:teamcity][:database][:username],
-    password: node[:postgresql][:password][:teamcity]
+            username: node[:teamcity][:database][:username],
+            password: node[:postgresql][:password][:teamcity]
   notifies :restart, "service[teamcity-server]"
 end

@@ -1,12 +1,19 @@
 require 'spec_helper'
 
-describe 'chef-teamcity-server::default' do
-  let(:chef_run) { ChefSpec::ChefRunner.new platform: 'ubuntu', version: '12.04' }
+describe 'teamcity::default' do
+  let(:chef_run) { ChefSpec::Runner.new }
   let(:converge) { chef_run.converge described_recipe }
 
   before do
     chef_run.node.set[:postgresql][:password][:postgres] = 'whatever'
     chef_run.node.set[:postgresql][:password][:teamcity] = 'whatever'
+    stub_command("grep -P 'authorizationToken=\r' /usr/local/teamcity/buildAgent/conf/buildAgent.properties").and_return(true)
+  end
+
+  ['apt::default', "teamcity::server", "teamcity::agent"].each do |recipe|
+    it "includes #{recipe} recipe" do
+      expect(converge).to include_recipe recipe
+    end
   end
 
   it 'downloads TeamCity' do

@@ -17,11 +17,11 @@ user node[:teamcity][:user] do
   shell '/bin/bash'
 end
 
-[ node[:teamcity][:path], 
-  node[:teamcity][:data_path],
-  "#{node[:teamcity][:data_path]}/config",
-  "#{node[:teamcity][:data_path]}/lib",
-  "#{node[:teamcity][:data_path]}/lib/jdbc" ].each do |directory|
+[node[:teamcity][:path],
+ node[:teamcity][:data_path],
+ "#{node[:teamcity][:data_path]}/config",
+ "#{node[:teamcity][:data_path]}/lib",
+ "#{node[:teamcity][:data_path]}/lib/jdbc"].each do |directory|
 
   directory directory do
     owner node[:teamcity][:user]

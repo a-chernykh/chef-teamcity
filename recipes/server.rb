@@ -9,9 +9,9 @@ template "init.server" do
   path "/etc/init.d/teamcity-server"
   mode 0755
   variables data_path: node[:teamcity][:data_path],
-    pid_file: node[:teamcity][:server][:pid_file],
-    path: node[:teamcity][:path],
-    user: node[:teamcity][:user]
+            pid_file: node[:teamcity][:server][:pid_file],
+            path: node[:teamcity][:path],
+            user: node[:teamcity][:user]
   notifies :enable, "service[teamcity-server]"
   notifies :start, "service[teamcity-server]"
 end
