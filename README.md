@@ -1,4 +1,6 @@
-# Description
+# teamcity cookbook
+[![Build Status](https://travis-ci.org/AndreyChernyh/chef-teamcity.png)](https://travis-ci.org/AndreyChernyh/chef-teamcity)
+
 Downloads, installs and configures [TeamCity](http://www.jetbrains.com/teamcity/). It also installs [PostgreSQL](https://github.com/opscode-cookbooks/postgresql) and uses it as the backend database for TeamCity.
 
 # Platforms

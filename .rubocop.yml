@@ -1,5 +1,6 @@
 AllCops:
   Excludes:
+    - vendor/**
     - tmp/**
 
 LineLength:
