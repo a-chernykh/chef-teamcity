@@ -1,5 +1,5 @@
 # Description
-Downloads, installs and configures TeamCity server and build agent. It also installs PostgreSQL and uses it as the backend database for TeamCity.
+Downloads, installs and configures [TeamCity](http://www.jetbrains.com/teamcity/). It also installs [PostgreSQL](https://github.com/opscode-cookbooks/postgresql) and uses it as the backend database for TeamCity.
 
 # Platforms
 * Debian
@@ -10,13 +10,14 @@ Tested on:
 * Ubuntu 13.04
 
 # Recipes
-
 * ```teamcity::default``` - installs PostgreSQL, TeamCity server and agent
 * ```teamcity::monit``` - installs monit and configures it to watch server and agent
 
-# Configuration
+# Usage
+Add ```recipe[teamcity]``` to your runlist. Optionally add ```recipe[teamcity::monit]``` if you'd like TeamCity to be monitored by monit.
 
-Available config items:
+# Configuration
+You should set at least ```node[:postgresql][:password][:postgres]``` and ```node[:postgresql][:password][:teamcity]``` to avoid unsafe defaults.
 
 * ```node[:teamcity][:version]``` - TeamCity version which will be downloaded (default: 8.0.3)
 * ```node[:teamcity][:host]``` - Server hostname (default: localhost)
@@ -29,3 +30,8 @@ Available config items:
 * ```node[:teamcity][:database][:username]``` - PostgreSQL username (default: teamcity)
 * ```node[:postgresql][:password][:postgres]``` - PostgreSQL password for 'postgres' user
 * ```node[:postgresql][:password][:teamcity]``` - PostgreSQL password for 'teamcity' user
+
+# License & Author
+Andrey Chernih [andrey.chernih@gmail.com](mailto:andrey.chernih@gmail.com)
+
+[Apache 2.0](https://github.com/AndreyChernyh/chef-secure-server/blob/master/LICENSE)
