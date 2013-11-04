@@ -4,10 +4,16 @@ describe 'teamcity::default' do
   let(:chef_run) { ChefSpec::Runner.new }
   let(:converge) { chef_run.converge described_recipe }
 
+  let(:install_path) { '/usr/local/teamcity-8.0.3' }
+  let(:owner) { 'root' }
+
   before do
     chef_run.node.set[:postgresql][:password][:postgres] = 'whatever'
     chef_run.node.set[:postgresql][:password][:teamcity] = 'whatever'
     stub_command("grep -P 'authorizationToken=\r' /usr/local/teamcity/buildAgent/conf/buildAgent.properties").and_return(true)
+
+    File.stub(:stat).with("#{install_path}/conf").and_return double(uid: 123)
+    Etc.stub(:getpwuid).with(123).and_return double(name: owner)
   end
 
   ['apt::default', "teamcity::server", "teamcity::agent"].each do |recipe|
@@ -26,5 +32,25 @@ describe 'teamcity::default' do
 
   it 'create jdbc libs dir' do
     expect(converge).to create_directory('/var/teamcity/lib/jdbc')
+  end
+
+  context 'installation path permissions' do
+    let(:chown_command) { "chown -R teamcity #{install_path}" }
+
+    context 'owned by teamcity user' do
+      let(:owner) { 'teamcity' }
+
+      it 'does nothing' do
+        expect(converge).not_to run_execute(chown_command)
+      end
+    end
+
+    context 'owned by root user' do
+      let(:owner) { 'root' }
+
+      it 'chowns directory' do
+        expect(converge).to run_execute(chown_command)
+      end
+    end
   end
 end
