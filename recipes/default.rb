@@ -36,7 +36,7 @@ end
 
 execute "tar --strip-components=1 -zxvf #{download_path}/#{file_name}" do
   cwd install_path
-  creates "#{node[:teamcity][:path]}/conf"
+  creates "#{install_path}/conf"
 end
 
 execute "change #{install_path} owner" do
