@@ -8,4 +8,7 @@ cookbook 'database'
 cookbook 'monit', git: 'https://github.com/phlipper/chef-monit.git'
 cookbook 'postfix'
 
-cookbook 'minitest-handler'
+group :integration do
+  cookbook 'minitest-handler'
+  cookbook 'teamcity-test', :path => 'test/cookbooks/teamcity-test'
+end

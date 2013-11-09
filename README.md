@@ -33,6 +33,14 @@ You should set at least ```node[:postgresql][:password][:postgres]``` and ```nod
 * ```node[:postgresql][:password][:postgres]``` - PostgreSQL password for 'postgres' user
 * ```node[:postgresql][:password][:teamcity]``` - PostgreSQL password for 'teamcity' user
 
+# Testing
+
+Run [test kitchen](https://github.com/opscode/test-kitchen) integration suite:
+
+```bash
+bundle exec kitchen test
+```
+
 # License & Author
 Andrey Chernih [andrey.chernih@gmail.com](mailto:andrey.chernih@gmail.com)
 

@@ -6,19 +6,18 @@ driver_config:
     memory: 512
 
 platforms:
-- name: ubuntu-13.04
+  - name: ubuntu-13.04
 
 suites:
-- name: default
-  run_list: 
-    - recipe[teamcity]
-    - recipe[teamcity::monit]
-    - recipe[minitest-handler]
-  attributes: {
-    postgresql: {
-      password: {
-        postgres: 'pass123',
-        teamcity: 'pass456'
+  - name: default
+    run_list: 
+      - recipe[teamcity-test::fast_integration]
+      - recipe[minitest-handler]
+    attributes: {
+      postgresql: {
+        password: {
+          postgres: 'pass123',
+          teamcity: 'pass456'
+        }
       }
     }
-  }

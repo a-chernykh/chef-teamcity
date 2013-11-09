@@ -139,6 +139,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry_debug (0.1.0)
+      pry (~> 0.9.0)
     rack (1.5.2)
     rainbow (1.1.4)
     rake (10.1.0)
@@ -229,6 +231,8 @@ DEPENDENCIES
   chefspec
   foodcritic (~> 3.0)
   kitchen-vagrant (~> 0.11)
+  pry
+  pry_debug
   rake
   rubocop
   test-kitchen (~> 1.0.0.beta)

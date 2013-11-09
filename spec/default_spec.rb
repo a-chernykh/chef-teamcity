@@ -27,30 +27,15 @@ describe 'teamcity::default' do
   end
 
   it 'create teamcity user' do
-    expect(converge).to create_user('teamcity')
+    expect(converge).to create_user('teamcity').with(home: '/home/teamcity')
   end
 
   it 'create jdbc libs dir' do
     expect(converge).to create_directory('/var/teamcity/lib/jdbc')
   end
 
-  context 'installation path permissions' do
-    let(:chown_command) { "chown -R teamcity #{install_path}" }
-
-    context 'owned by teamcity user' do
-      let(:owner) { 'teamcity' }
-
-      it 'does nothing' do
-        expect(converge).not_to run_execute(chown_command)
-      end
-    end
-
-    context 'owned by root user' do
-      let(:owner) { 'root' }
-
-      it 'chowns directory' do
-        expect(converge).to run_execute(chown_command)
-      end
-    end
+  it 'chowns directory' do
+    converge
+    expect(chef_run.execute('extract_teamcity')).to notify('execute[change_teamcity_owner]')
   end
 end

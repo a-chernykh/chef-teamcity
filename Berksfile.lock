@@ -23,6 +23,9 @@
     "minitest-handler": {
       "locked_version": "1.1.0"
     },
+    "teamcity-test": {
+      "path": "./test/cookbooks/teamcity-test"
+    },
     "build-essential": {
       "locked_version": "1.4.0"
     },

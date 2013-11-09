@@ -13,3 +13,6 @@ gem 'rubocop'
 group :integration do
   gem 'kitchen-vagrant', '~> 0.11'
 end
+
+gem 'pry'
+gem 'pry_debug'

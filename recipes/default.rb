@@ -34,14 +34,16 @@ end
 
 end
 
-execute "tar --strip-components=1 -zxvf #{download_path}/#{file_name}" do
-  cwd install_path
-  creates "#{install_path}/conf"
+execute 'change_teamcity_owner' do
+  command "chown -R #{node[:teamcity][:user]} #{install_path}"
+  action :nothing
 end
 
-execute "change #{install_path} owner" do
-  command "chown -R #{node[:teamcity][:user]} #{install_path}"
-  only_if { Etc.getpwuid(File.stat("#{install_path}/conf").uid).name != node[:teamcity][:user] }
+execute "extract_teamcity" do
+  command "tar --owner=#{node[:teamcity][:user]} --strip-components=1 -zxvf #{download_path}/#{file_name}"
+  cwd install_path
+  creates "#{install_path}/conf"
+  notifies :run, 'execute[change_teamcity_owner]'
 end
 
 link node[:teamcity][:path] do
