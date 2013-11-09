@@ -5,3 +5,4 @@ default[:teamcity][:url]        = "http://#{node[:teamcity][:host]}:#{node[:team
 default[:teamcity][:user]       = "teamcity"
 default[:teamcity][:path]       = "/usr/local/teamcity"
 default[:teamcity][:data_path]  = "/var/teamcity"
+default[:teamcity][:user_home]  = "/home/#{default[:teamcity][:user]}"

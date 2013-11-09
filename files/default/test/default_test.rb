@@ -6,7 +6,15 @@ describe_recipe 'teamcity::default' do
   end
 
   it 'creates teamcity user' do
-    user('teamcity').must_exist
+    user('teamcity').must_exist.with(:home, '/home/teamcity')
+  end
+
+  it 'generates rsa key' do
+    file('/home/teamcity/.ssh/id_rsa').must_exist
+  end
+
+  it 'creates teamcity home directory' do
+    directory('/home/teamcity').must_exist.with(:owner, 'teamcity')
   end
 
   it 'creates jdbc plugins directory' do

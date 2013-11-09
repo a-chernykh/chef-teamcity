@@ -16,8 +16,20 @@ remote_file "#{download_path}/#{file_name}" do
 end
 
 user node[:teamcity][:user] do
-  home node[:teamcity][:path]
+  home node[:teamcity][:user_home]
   shell '/bin/bash'
+  supports manage_home: true
+end
+
+directory "#{node[:teamcity][:user_home]}/.ssh" do
+  owner node[:teamcity][:user]
+  group node[:teamcity][:user]
+  mode 0700
+end
+
+execute 'generate_ssh_key' do
+  command "ssh-keygen -t rsa -q -f #{node[:teamcity][:user_home]}/.ssh/id_rsa -P \"\""
+  creates "#{node[:teamcity][:user_home]}/.ssh/id_rsa"
 end
 
 [install_path,
