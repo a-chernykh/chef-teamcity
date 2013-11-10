@@ -10,7 +10,7 @@ describe_recipe 'teamcity::default' do
   end
 
   it 'generates rsa key' do
-    file('/home/teamcity/.ssh/id_rsa').must_exist
+    file('/home/teamcity/.ssh/id_rsa').must_exist.with(:owner, 'teamcity')
   end
 
   it 'creates teamcity home directory' do

@@ -28,6 +28,7 @@ directory "#{node[:teamcity][:user_home]}/.ssh" do
 end
 
 execute 'generate_ssh_key' do
+  user node[:teamcity][:user]
   command "ssh-keygen -t rsa -q -f #{node[:teamcity][:user_home]}/.ssh/id_rsa -P \"\""
   creates "#{node[:teamcity][:user_home]}/.ssh/id_rsa"
 end
