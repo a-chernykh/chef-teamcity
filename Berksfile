@@ -10,5 +10,4 @@ cookbook 'postfix'
 
 group :integration do
   cookbook 'minitest-handler'
-  cookbook 'teamcity-test', :path => 'test/cookbooks/teamcity-test'
 end

@@ -11,7 +11,8 @@ platforms:
 suites:
   - name: default
     run_list: 
-      - recipe[teamcity-test::fast_integration]
+      - recipe[teamcity]
+      - recipe[teamcity::monit]
       - recipe[minitest-handler]
     attributes: {
       postgresql: {

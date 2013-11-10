@@ -1,3 +1,9 @@
+# Upload eagerly downloaded file to speed up integration suite
+file_name = "TeamCity-#{node[:teamcity][:version]}.tar.gz"
+cookbook_file File.join(Chef::Config[:file_cache_path], file_name) do
+  action :create_if_missing
+end if File.exists?("#{run_context.cookbook_collection[cookbook_name].root_dir}/files/default/#{file_name}")
+
 include_recipe "apt::default"
 
 package 'openjdk-7-jre'

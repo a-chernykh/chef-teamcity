@@ -1,3 +1,4 @@
 tmp
 .kitchen/
 .kitchen.local.yml
+files/default/*.gz
