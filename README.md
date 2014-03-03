@@ -1,5 +1,5 @@
 # teamcity cookbook
-[![Build Status](https://travis-ci.org/AndreyChernyh/chef-teamcity.png)](https://travis-ci.org/AndreyChernyh/chef-teamcity)
+[![Build Status](https://travis-ci.org/andreychernih/chef-teamcity.png)](https://travis-ci.org/AndreyChernyh/chef-teamcity)
 
 Downloads, installs and configures [TeamCity](http://www.jetbrains.com/teamcity/). It also installs [PostgreSQL](https://github.com/opscode-cookbooks/postgresql) and uses it as the backend database for TeamCity.
 
@@ -44,4 +44,4 @@ bundle exec kitchen test
 # License & Author
 Andrey Chernih [andrey.chernih@gmail.com](mailto:andrey.chernih@gmail.com)
 
-[Apache 2.0](https://github.com/AndreyChernyh/chef-secure-server/blob/master/LICENSE)
+[Apache 2.0](https://github.com/andreychernih/chef-secure-server/blob/master/LICENSE)
