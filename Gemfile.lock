@@ -192,7 +192,7 @@ GEM
     slop (3.4.7)
     solve (0.8.2)
     systemu (2.5.2)
-    test-kitchen (1.0.0.rc.2)
+    test-kitchen (1.0.0)
       mixlib-shellout (~> 1.2)
       net-scp (~> 1.1)
       net-ssh (~> 2.7)
@@ -233,4 +233,4 @@ DEPENDENCIES
   pry_debug
   rake
   rubocop
-  test-kitchen (~> 1.0.0.beta)
+  test-kitchen
