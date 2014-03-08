@@ -23,7 +23,7 @@ describe 'teamcity::default' do
   end
 
   it 'downloads TeamCity' do
-    expect(converge).to create_remote_file_if_missing("#{Chef::Config[:file_cache_path]}/TeamCity-8.0.3.tar.gz")
+    expect(converge).to create_remote_file_if_missing("#{Chef::Config[:file_cache_path]}/TeamCity-8.0.5.tar.gz")
   end
 
   it 'create teamcity user' do
