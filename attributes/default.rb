@@ -7,7 +7,6 @@ default[:teamcity][:path]       = "/usr/local/teamcity"
 default[:teamcity][:data_path]  = "/var/teamcity"
 default[:teamcity][:user_home]  = "/home/#{node[:teamcity][:user]}"
 
-
 default[:teamcity][:file_name]     = "TeamCity-#{node[:teamcity][:version]}.tar.gz"
 default[:teamcity][:download_url]  = "http://download.jetbrains.com/teamcity/#{node[:teamcity][:file_name]}"
 default[:teamcity][:download_path] = Chef::Config[:file_cache_path]
