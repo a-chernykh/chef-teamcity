@@ -30,6 +30,28 @@ task :image do
   EOT
 end
 
+desc 'Prepare tarball of cookbook to be uploaded to the community.opscode.com'
+task :bundle do
+  cookbook = `echo ${PWD##*/}`.strip
+  sh <<-EOT
+    rm -rf bundle
+    mkdir -p bundle/teamcity
+
+    cp -rf attributes bundle/teamcity/
+    cp -rf recipes bundle/teamcity/
+    cp -rf templates bundle/teamcity/
+    cp -rf README.md bundle/teamcity/
+
+    knife cookbook metadata from file metadata.rb
+    mv -f metadata.json bundle/teamcity/
+
+    cd bundle
+    tar -czvf teamcity.tar.gz teamcity
+
+    mv -f teamcity.tar.gz ..
+  EOT
+end
+
 # http://www.nathenharvey.com/blog/2012/07/06/mvt-knife-test-and-travisci
 
 task :prepare_sandbox do

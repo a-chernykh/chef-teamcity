@@ -2,3 +2,5 @@ tmp
 .kitchen/
 .kitchen.local.yml
 files/default/*.gz
+bundle/
+teamcity.tar.gz
