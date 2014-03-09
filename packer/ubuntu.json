@@ -1,0 +1,34 @@
+{
+  "description": "Ubuntu 13.04 with TeamCity pre-downloaded and openjdk pre-installed",
+
+  "builders": [
+    { "type": "virtualbox-ovf",
+      "name": "ubuntu-13.04-teamcity",
+      "source_path": "/Users/akhkharu/.vagrant.d/boxes/opscode-ubuntu-13.04/virtualbox/box.ovf",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30s",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now" 
+    }
+  ],
+
+  "provisioners": [
+    { "type": "file",
+      "source": "apt/sources.list",
+      "destination": "/tmp/sources.list"
+    },
+
+    { "type": "shell",
+      "script": "provision.sh"
+    },
+
+    { "type": "chef-solo",
+      "cookbook_paths": ["cookbooks"],
+      "run_list": [
+        "recipe[teamcity::software]"
+      ]
+    }
+  ],
+
+  "post-processors": [ "vagrant" ]
+}

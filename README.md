@@ -21,7 +21,7 @@ Add ```recipe[teamcity]``` to your runlist. Optionally add ```recipe[teamcity::m
 # Configuration
 You should set at least ```node[:postgresql][:password][:postgres]``` and ```node[:postgresql][:password][:teamcity]``` to avoid unsafe defaults.
 
-* ```node[:teamcity][:version]``` - TeamCity version which will be downloaded (default: 8.0.3)
+* ```node[:teamcity][:version]``` - TeamCity version which will be downloaded (default: 8.1.1)
 * ```node[:teamcity][:host]``` - Server hostname (default: localhost)
 * ```node[:teamcity][:port]``` - Server port (default: 8111)
 * ```node[:teamcity][:user]``` - System username under which TeamCity will be running (default: teamcity)

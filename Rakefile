@@ -9,10 +9,6 @@ Bundler.setup
 
 require 'berkshelf'
 
-# FileUtils.rm_rf('vendor/cookbooks')
-# berksfile = Berkshelf::Berksfile.from_file('Berksfile')
-# berksfile.install(path: 'vendor/cookbooks')
-
 require 'rubocop/rake_task'
 Rubocop::RakeTask.new
 
@@ -22,6 +18,16 @@ desc 'Validates cookbook with "knife cookbook" command'
 task :knife do
   Rake::Task[:prepare_sandbox].execute
   sh "bundle exec knife cookbook test #{cookbook_name} -o #{sandbox_path}/../"
+end
+
+desc 'Prepares VirtualBox image containing TeamCity pre-downloaded and Java installed'
+task :image do
+  sh <<-EOT
+    rm -rf packer/cookbooks
+    berks install --path packer/cookbooks
+    cd packer
+    packer build ubuntu.json
+  EOT
 end
 
 # http://www.nathenharvey.com/blog/2012/07/06/mvt-knife-test-and-travisci

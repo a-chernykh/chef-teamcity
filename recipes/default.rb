@@ -1,25 +1,4 @@
-# Upload eagerly downloaded file to speed up integration suite
-file_name = "TeamCity-#{node[:teamcity][:version]}.tar.gz"
-cookbook_file File.join(Chef::Config[:file_cache_path], file_name) do
-  action :create_if_missing
-end if File.exists?("#{run_context.cookbook_collection[cookbook_name].root_dir}/files/default/#{file_name}")
-
-include_recipe "apt::default"
-
-package 'openjdk-7-jre'
-package 'openjdk-7-jdk'
-
-file_name     = "TeamCity-#{node[:teamcity][:version]}.tar.gz"
-download_url  = "http://download.jetbrains.com/teamcity/#{file_name}"
-download_path = Chef::Config[:file_cache_path]
-
-install_path = "#{node[:teamcity][:path]}-#{node[:teamcity][:version]}"
-
-remote_file "#{download_path}/#{file_name}" do
-  source download_url
-  action :create_if_missing
-  not_if { ::File.exists?(install_path) }
-end
+include_recipe "#{cookbook_name}::software"
 
 user node[:teamcity][:user] do
   home node[:teamcity][:user_home]
@@ -39,7 +18,7 @@ execute 'generate_ssh_key' do
   creates "#{node[:teamcity][:user_home]}/.ssh/id_rsa"
 end
 
-[install_path,
+[node[:teamcity][:install_path],
  node[:teamcity][:data_path],
  "#{node[:teamcity][:data_path]}/config",
  "#{node[:teamcity][:data_path]}/lib",
@@ -54,21 +33,21 @@ end
 end
 
 execute 'change_teamcity_owner' do
-  command "chown -R #{node[:teamcity][:user]} #{install_path}"
+  command "chown -R #{node[:teamcity][:user]} #{node[:teamcity][:install_path]}"
   action :nothing
 end
 
 execute "extract_teamcity" do
-  command "tar --owner=#{node[:teamcity][:user]} --strip-components=1 -zxvf #{download_path}/#{file_name}"
-  cwd install_path
-  creates "#{install_path}/conf"
+  command "tar --owner=#{node[:teamcity][:user]} --strip-components=1 -zxvf #{node[:teamcity][:download_path]}/#{node[:teamcity][:file_name]}"
+  cwd node[:teamcity][:install_path]
+  creates "#{node[:teamcity][:install_path]}/conf"
   notifies :run, 'execute[change_teamcity_owner]'
 end
 
 link node[:teamcity][:path] do
   owner node[:teamcity][:user]
   group node[:teamcity][:user]
-  to install_path
+  to node[:teamcity][:install_path]
 end
 
 include_recipe "#{cookbook_name}::server"

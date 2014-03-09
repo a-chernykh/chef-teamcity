@@ -1,0 +1,5 @@
+deb mirror://mirrors.ubuntu.com/mirrors.txt raring main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt raring-updates main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt raring-backports main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt raring-security main restricted universe multiverse
+

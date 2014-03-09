@@ -6,7 +6,11 @@ driver_config:
     memory: 512
 
 platforms:
-  - name: ubuntu-13.04
+  - name: ubuntu-13.04-teamcity
+
+provisioner:
+  solo_rb:
+    file_cache_path: /var/chef/cache/
 
 suites:
   - name: default
