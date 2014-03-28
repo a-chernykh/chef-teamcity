@@ -33,6 +33,16 @@ You should set at least ```node[:postgresql][:password][:postgres]``` and ```nod
 * ```node[:postgresql][:password][:postgres]``` - PostgreSQL password for 'postgres' user
 * ```node[:postgresql][:password][:teamcity]``` - PostgreSQL password for 'teamcity' user
 
+# teamcity_plugin resource
+
+It's possible to download and install custom plugin by utilizing `teamcity_plugin` LWRP:
+
+```ruby
+teamcity_plugin 'http://teamcity.jetbrains.com/guestAuth/repository/download/bt398/lastest.lastSuccessful/teamcity.github.zip'
+```
+
+It will download and move `teamcity.github.zip` to the `plugins` directory under `node[:teamcity][:data_path]`.
+
 # Testing
 
 Run [test kitchen](https://github.com/opscode/test-kitchen) integration suite:

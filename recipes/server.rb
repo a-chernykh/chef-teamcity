@@ -1,9 +1,5 @@
 include_recipe "#{cookbook_name}::database"
-
-service "teamcity-server" do
-  supports start: true, stop: true, restart: true
-  action :nothing
-end
+include_recipe "#{cookbook_name}::services"
 
 template "init.server" do
   path "/etc/init.d/teamcity-server"

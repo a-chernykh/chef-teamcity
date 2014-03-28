@@ -12,4 +12,6 @@ gem 'chefspec'
 gem 'rubocop'
 
 gem 'pry'
-gem 'pry_debug'
+gem 'pry-byebug'
+gem 'pry-stack_explorer'
+gem 'pry-rails'
