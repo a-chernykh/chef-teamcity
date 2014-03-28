@@ -1,9 +1,6 @@
 ---
-driver_plugin: vagrant
-driver_config:
-  require_chef_omnibus: true
-  customize:
-    memory: 512
+driver:
+  name: vagrant
 
 platforms:
   - name: ubuntu-13.04-teamcity
@@ -17,6 +14,7 @@ suites:
     run_list: 
       - recipe[teamcity]
       - recipe[teamcity::monit]
+      - recipe[teamcity::test]
       - recipe[minitest-handler]
     attributes: {
       postgresql: {
