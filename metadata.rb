@@ -9,4 +9,3 @@ version          '1.1.1'
 recipe 'default', 'Installs and configures TeamCity server'
 
 %w(ubuntu debian).each { |os| supports os }
-%w(apt).each { |cookbook| depends cookbook }
