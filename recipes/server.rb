@@ -1,5 +1,19 @@
-include_recipe "#{cookbook_name}::database"
-include_recipe "#{cookbook_name}::services"
+remote_file "#{node[:teamcity][:data_path]}/lib/jdbc/postgresql-9.3-1100.jdbc3.jar" do
+  source "http://jdbc.postgresql.org/download/postgresql-9.3-1100.jdbc3.jar"
+  owner node[:teamcity][:database][:username]
+  action :create_if_missing
+end
+
+template "database.properties" do
+  path "#{node[:teamcity][:data_path]}/config/database.properties"
+  owner node[:teamcity][:user]
+  mode 0600
+  variables name: node[:teamcity][:database][:name],
+  host: node[:teamcity][:database][:host],
+  username: node[:teamcity][:database][:username],
+  password: node[:postgresql][:password][:teamcity]
+  notifies :restart, "service[teamcity-server]"
+end
 
 template "init.server" do
   path "/etc/init.d/teamcity-server"
@@ -15,4 +29,9 @@ end
 template "server.xml" do
   path "#{node[:teamcity][:path]}/conf/server.xml"
   notifies :restart, "service[teamcity-server]"
+end
+
+service "teamcity-server" do
+  supports start: true, stop: true, restart: true
+  action :nothing
 end

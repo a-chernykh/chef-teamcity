@@ -1,5 +1,3 @@
-include_recipe "#{cookbook_name}::services"
-
 template "init.agent" do
   path "/etc/init.d/teamcity-agent"
   mode 0755
@@ -16,4 +14,9 @@ template "buildAgent.properties" do
             name: node[:teamcity][:agent][:name]
   notifies :restart, "service[teamcity-agent]"
   only_if "grep -P 'authorizationToken=\r' #{config_path}"
+end
+
+service "teamcity-agent" do
+  supports start: true, stop: true, restart: true
+  action :nothing
 end

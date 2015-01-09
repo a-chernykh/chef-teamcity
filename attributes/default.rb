@@ -1,4 +1,4 @@
-default[:teamcity][:version]    = "8.1.1"
+default[:teamcity][:version]    = "9.0.1"
 default[:teamcity][:host]       = "localhost"
 default[:teamcity][:port]       = "8111"
 default[:teamcity][:url]        = "http://#{node[:teamcity][:host]}:#{node[:teamcity][:port]}/"
