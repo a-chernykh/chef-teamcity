@@ -24,7 +24,6 @@ template "init.server" do
             pid_file: node[:teamcity][:server][:pid_file],
             path: node[:teamcity][:path],
             user: node[:teamcity][:user]
-  notifies :enable, "service[teamcity-server]"
   notifies :start, "service[teamcity-server]"
 end
 

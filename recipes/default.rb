@@ -49,6 +49,3 @@ link node[:teamcity][:path] do
   group node[:teamcity][:user]
   to node[:teamcity][:install_path]
 end
-
-include_recipe "#{cookbook_name}::server"
-include_recipe "#{cookbook_name}::agent"
