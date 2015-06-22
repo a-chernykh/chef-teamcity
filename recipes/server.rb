@@ -22,6 +22,8 @@ template "init.server" do
   mode 0755
   variables data_path: node[:teamcity][:data_path],
             pid_file: node[:teamcity][:server][:pid_file],
+            heap_size: node[:teamcity][:server][:heap_size],
+            max_perm_size: node[:teamcity][:server][:max_perm_size],
             path: node[:teamcity][:path],
             user: node[:teamcity][:user]
   notifies :start, "service[teamcity-server]"
