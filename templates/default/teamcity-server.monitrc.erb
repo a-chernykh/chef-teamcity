@@ -1,8 +1,0 @@
-check process teamcity-server with pidfile <%= @pid_file %>
-  start program = "/etc/init.d/teamcity-server start"
-  stop program = "/etc/init.d/teamcity-server stop"
-  if failed host <%= @host %> port <%= @port %> protocol http
-    with timeout 60 seconds
-    for 20 cycles 
-    then restart
-  group teamcity

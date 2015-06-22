@@ -15,6 +15,7 @@ action :install do
   unless ::File.exist?(path)
     remote_file path do
       source new_resource.url
+      owner node[:teamcity][:user]
       action :create_if_missing
       notifies :restart, "service[teamcity-server]"
     end

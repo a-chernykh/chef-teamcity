@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-export TEAMCITY_DATA_PATH=<%= @data_path %> CATALINA_PID=<%= @pid_file %>
+export TEAMCITY_DATA_PATH=<%= @data_path %> CATALINA_PID=<%= @pid_file %> TEAMCITY_SERVER_MEM_OPTS="-Xmx<%= @heap_size %> -Xms<%= @heap_size %> -XX:MaxPermSize=<%= @max_perm_size %>"
 
 cd <%= @path %>
 
